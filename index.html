@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>iflx.us</title>
+<!-- Demo application for "Mistakes I Made Building Netflix for the iPhone, SxSW 2011 -->   
+<!-- Kent Brewster, author, http://kentbrewster.com and http://twitter.com/kentbrew -->
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta names="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon" href="data:image/jpeg;charset=UTF-8;base64,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">
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: helvetica neue, helvetica, arial, sans-serif;
+  background: #000;
+   -webkit-user-select:none;
+   -webkit-touch-callout:none;
+   -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+div, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  float: left;
+	height: 90px;
+	width: 64px;
+	background: #aaa url() 50% 50% no-repeat;
+	border: 2px solid #fff;
+	-webkit-box-shadow: 2px 2px 4px #222;
+	margin: 10px;
+  -webkit-transform: rotate(-2deg);
+}
+.play {
+	height: 90px;
+	width: 64px;
+  display: block;
+	background:transparent url('data:image/png;charset=UTF-8;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA/5JREFUeNrEVlssm2EY/vpXHWZFrWWqtlYcIuOiQqyrRMMVs8TN5go3Qlw4hRsXLiQSIUgQEm4cbyYuJFNcOSSycScRsUy1dYhONSlKVqXs/Zr/l3fW9bQs+5In/b/v//736Xt+ecS3JQIoAFJAFCCSPT9nYQLs3d/fW70J4nl5T0nesCS+rDPAZyA2+EsYC9AAxCSwZQGsAPGJL4QvAcX4ICEhIaiioiKisLAwUi6XB0ul0hB6fnx8fH1wcODQarXn4+PjF4eHh7ePZM0B6b4nwheAdw+OE4n4HR0dYiCThIaGMp5Ustvtd0B62tLSYrFarU70SgukRneEMYD33CYtLS14bm5OnpiYGOqPLfV6vb24uNi4s7PjQMcznHkx4QeAhD4kJycLNjY2kkHDoEAcCBre5uXl6ba2tjhSCxB+pA8MikYXmVAoZBYXFxWYbG1tLbatre01/fUph+Db2dlZOXUJeyTm8XgKTKjiLre3t0uwGS8uLgRjY2PqoqIiKQhR9/T0KLe3t72mCZXR2dkpQUdqjvAZm9gkLi6OX1VVJXEnIDs7m3R1dRGlUqkYHBzMB6SbTKYwT6RlZWVihUIhYLeRoGUsw0ama1VXV0d5ikaGYUh+fj7p7e0l8fHxKa2trYXDw8OvHA6H22+oLCoTZwG9GMftCgoKhL74CASRkpIS0tfXR8LCwlIrKytLJiYmUtzdBZlP0VbKcOakC5I6xJ9oDA8PJ+Xl5aS7u5tcXV2lNzQ0FMzMzCjwndTU1CdoK6GET1B0CQJJg5iYGFJTU0MaGxsjdTqdEkczRD0fXQ1hUKQSPp9P/mZRU1OtbTbbH/84Jbt8qLgWy00gRJA6ZHR0lDQ1NZHo6OgtqLlH3Dsgx2Xumia3lWs/RqPxWiaT+exHqJ8Eyh+Zn58nKpXqK9TSHbDSPb6zu7v7A3eRILZ5uhy9srJymZubG+GNyOl0kuXlZQIBQjIyMr5Bfu6KxeJrd3eXlpZsaGuihIfcbmhoyNrc3PzcUy6ur6+T6elpApbQ19fXG6DIn3vqICDzDB3tB7HNkppVBJXDOTIyclpXV/dbzYTqT6ampmjeHZWWlupzcnIs3iwxOTlpMRgMXFycQwH/zkPFu4gr3pubm0m4ni4sLMjA3IkajUaPA8Jbm8rKytpDvXGejh7/rT25YgZF1o1arYYc1tn9JaOa0W8R2S+yMaEZ8An5zJGZmanr7+8/oc73IUXuoIOcUDM+6vZaPEz9aYh6i9/RtlVbWysCMwmhjAmSkpJc/qUWMJvNN6urq7aBgQErDTp/hyg832g4n/7rMfHxIKzCHcVbvAC+BDIIu9NYxo764WhApppc0REVcAREZm+CfgowAECBseLNwrudAAAAAElFTkSuQmCC') 35px 60px no-repeat;
+}
+ul {
+  list-style: none;
+}
+li {
+  height: 118px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#bbb));  
+  border-bottom: 1px solid #777;
+  color: #000;
+  text-shadow: 0 1px 1px #fff;
+}
+li:after { 
+  content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden; 
+}
+li span, li p {
+  font-size: 16px;
+  margin-top: 10px;
+  width: 220px;
+  height: 20px;
+  line-height: 20px;
+}
+li p.info {
+  font-size: 15px;
+  width: 300px;
+}
+.ellip {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+li span.title {
+  display: inline-block;
+}
+li div.extras {
+  display: none;
+  overflow: hidden;
+  margin: 20px 10px 10px 10px;
+  padding: 0;
+}
+li div.extras p {
+  margin: 5px 0;
+  width: auto;
+  height: auto;
+  overflow: auto;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: justify;
+}
+li div.extras p.detailHeader {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+}
+li div.extras p a {
+  color: #333;
+  text-decoration: none;
+}
+li div.extras p.episodeLine {
+  height: 30px;
+  font-size: 14px;
+  line-height: 30px;
+}
+li div.extras a.playEpisode {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  width: 20px;
+  margin-right: 8px;
+	background: #600;
+	-webkit-box-shadow: 2px 2px 3px #222;
+  border: 1px solid #aaa;
+  color: #fff;
+}
+li.expanded {
+  height: auto;
+}
+li.expanded div.extras {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+#modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding-bottom: 100px;
+  z-index: 666;
+  text-align: center;
+  background: #000;
+  -webkit-opacity: .7;
+}
+#search {
+  z-index: 777;
+  border: 2px solid #fff;
+  -webkit-opacity: 1;
+  position: absolute;
+  margin-top: -100px;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#bbb));  
+  border-bottom: 1px solid #777;
+  color: #000;
+  font-size: 12px;
+  text-shadow: 0 1px 1px #fff;
+  padding-bottom: 10px;
+}
+input#searchQuery {
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+  height: 32px;
+  width: 80%;
+  font-size: 24px;
+  line-height: 32px;
+  padding: 0;
+}
+li p.starContainer {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 32px;
+  line-height: 32px;
+  letter-spacing: 4.2px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.fullStars, .emptyStars {
+  position: absolute;
+  width: 100px;
+  top: 0;
+  left: 0;
+}
+.fullStars {
+  color: #a00;
+  overflow: hidden;
+}
+.synopsis {
+  pointer-events: none;
+}
+p#contact { 
+   margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div id="bd">
+  <ul id="results"></ul>
+</div>
+<div id="modal"></div>
+<div id="search">
+  <input id="searchQuery" autocorrect="off" placeholder="Find a Movie"/>
+  <p>To close me, tap outside the gray part.<br>To open me up again, tap with two fingers.</p>     
+  <p id="contact">Questions? Please ping Kent Brewster<br>via Twitter, at <a href="http://twitter.com/kentbrew">@kentbrew</a></p>
+</div>
+<script>
+(function (w, d, a) {
+  var $ = w[a.k] = { 'w':w, 'd':d, 'a':a, 's':{}, 'g':{} };
+  $.f = ( function () { 
+    return {  
+      fn: [],
+      renderSearch: function(r) {
+        $.s.results.innerHTML = '';
+        var catalog = r.catalog;
+        console.log(r);
+        for (var i = 0, n = catalog.length; i < n; i = i + 1) {
+          var t = catalog[i];
+          var li = $.f.create('LI');
+          var id = t.id.split('/').pop();
+          li.id = id;
+          var cdn = id.substr(-1);
+          var box = $.f.create({'DIV':{'className':'box'}});
+          box.style.backgroundImage = 'url(http://cdn.nflximg.com/US/boxshots/small/' + id + '.jpg)';
+          var playUrl = 'nflx://www.netflix.com/WiPlayer?movieid=' + id;
+          if (typeof t.episodes === 'object') {
+            playUrl = playUrl + '&episodeid=' + t.episodes[0].id.split('/').pop();
+          }
+          playUrl = playUrl + '&returnUrl=http://iflx.us#' + id;
+          var play = $.f.create({'A':{'className':'play', 'href': playUrl }});
+          play.onclick = function() {
+            $.w.location = this.href;
+          }
+          box.appendChild(play);
+          li.appendChild(box);
+          li.appendChild($.f.create({'SPAN':{'className':'title ellip', 'innerHTML':t.title.title_short}}));
+          var info = $.f.create({'P':{'className':'info'}});
+          if (t.release_year) {
+            info.innerHTML += t.release_year;
+          }
+          var rating = $.c.ml[t.maturity_level + ''];
+          if (rating !== 'undefined') {
+            info.innerHTML += ' ' + rating;
+          }
+          if (typeof t.episodes === 'object') {
+            info.innerHTML += ' ' + t.episodes.length + ' episodes';
+          }
+          li.appendChild(info);
+          var starContainer = $.f.create({'P':{'className':'starContainer'}});
+          starContainer.title = t.average_rating;
+          var fullStars = $.f.create({'SPAN':{'className':'fullStars', 'innerHTML':'&#9733;&#9733;&#9733;&#9733;&#9733;'}});
+          fullStars.style.width = (t.average_rating * 20) + '%';
+          starContainer.appendChild(fullStars);
+          var emptyStars = $.f.create({'SPAN':{'className':'emptyStars', 'innerHTML':'&#9734;&#9734;&#9734;&#9734;&#9734;'}});
+          starContainer.appendChild(emptyStars);
+          li.appendChild(starContainer);
+          var extras = $.f.create({'DIV':{'className':'extras'}});
+          extras.appendChild($.f.create({'P':{'innerHTML':'Synopsis', 'className': 'detailHeader'}}));
+          var synopsis = $.f.create({'P':{'className':'synopsis', 'innerHTML':t.synopsis.regular}});
+          extras.appendChild(synopsis);
+          if (typeof t.episodes === 'object') {
+            extras.appendChild($.f.create({'P':{'innerHTML':'Episodes', 'className': 'detailHeader'}}));
+            for (var ep = 0, nep = t.episodes.length; ep < nep; ep++) {
+              var epLine = $.f.create({'P':{'className':'episodeLine'}});
+              var playUrl = 'nflx://www.netflix.com/WiPlayer?movieid=' + id  + '&episodeid=' + t.episodes[ep].id.split('/').pop();
+              playUrl = playUrl + '&returnUrl=http://iflx.us#' + id;           
+              var play = $.f.create({'A':{'className':'playEpisode', 'innerHTML': '&#x25B6;', 'href': playUrl }});
+              play.onclick = function() {
+                $.w.location = this.href;
+              }
+              epLine.appendChild(play);
+              var span = $.f.create({'SPAN':{'innerHTML': ep + 1 + ': ' + t.episodes[ep].episode_short }});              
+              epLine.appendChild(span);
+              extras.appendChild(epLine);  
+            }
+          }
+          li.appendChild(extras);
+          $.s.results.appendChild(li);
+        }
+      },
+      runSearch: function(q) {
+        var n = $.f.fn.length;
+        var id = $.a.k + '.f.fn[' + n + ']';
+        var filters = 'http://api.netflix.com/categories/title_formats/instant';
+        var url = $.a.search + '?expand=@title,@synopsis_short,@episodes&filters=' + filters + '&max_results=20&output=json&v=2.0&term=' + encodeURIComponent(q) + '&callback=' + encodeURIComponent(id);
+        $.f.fn[n] = function(r) {
+          var id = $.a.k + '.f.fn[' + n + ']';
+          $.f.destroy($.d.getElementById(id));
+          $.f.renderSearch(r); 
+        };
+        $.d.b.appendChild($.f.create({'SCRIPT':{'src':$.f.oAuthRequest(url), 'type':'text/javascript', 'charset':'utf-8'}}));
+      },
+      checkSearch : function() {
+        var v = $.s.searchQuery.value;
+        if (v) {
+          if (v !== $.g.lastValue) {
+            $.f.runSearch(v);
+          }
+          $.g.lastValue = v;
+        }
+      },
+      listen : function (el, ev, fn) {
+        el.addEventListener(ev, fn, false);
+      }, 
+      housekeep : function () {
+        $.d.b = $.d.getElementsByTagName('BODY')[0];
+        $.c = {
+          "ml": {
+            "10":"TV-YA", "40":"G", "50":"TV-G", "60":"PG", "70":"TV-PG", "80":"PG-13", "90":"TV-14", "100":"R", "110":"TV-MA", "120":"NC-17", "130":"NR", "1000":"UR" 
+          }
+        };
+        var e = ['results', 'modal', 'search', 'searchQuery'];
+        for (var i = 0, n = e.length; i < n; i = i + 1) {
+          if ($.d.getElementById(e[i])) {
+            $.s[e[i]] = $.d.getElementById(e[i]);
+          }
+        }
+        var v = [
+          {'el':$.d.b, 'ev':'touchstart'}, 
+          {'el':$.d.b, 'ev':'touchmove'},
+          {'el':$.d.b, 'ev':'touchend'}
+        ];
+        for (var i = 0, n = v.length; i < n; i = i + 1) {
+          $.f.listen(v[i].el, v[i].ev, $.f[v[i].ev]); 
+        }  
+        $.w.setInterval(function() { $.f.checkSearch(); }, 500);
+        $.f.hideChrome();
+      },
+      hideChrome: function() {
+        $.w.setTimeout(function() { $.w.scrollTo(0, 1); }, 0);
+      },
+      touchstart: function(e) {
+        this.moved = false;
+        if (e.touches.length > 1) {
+          $.f.showSearch();
+          this.moved = true;
+          e.preventDefault();
+        }
+      },
+      touchmove: function(e) {
+        var el = (e.target.nodeType == 3) ? e.target.parentNode : e.target;
+        if (el === $.s.modal || el === $.s.search || el === $.s.searchQuery) {
+          e.preventDefault();
+          return;
+        }
+        this.moved = true;
+      },
+      touchend: function(e) {
+        if (!this.moved) {
+          var el = (e.target.nodeType == 3) ? e.target.parentNode : e.target;
+          $.f.handleClickOn(el);
+          e.preventDefault();
+        }
+      },
+      handleClickOn: function(el) {
+        if (el === $.s.modal && $.s.results.innerHTML !== '') {
+          $.f.hideSearch();
+          return;
+        }
+        var movie = null;
+        if (el.parentNode === $.s.results)  {
+          movie = el;
+        }
+        if (el.parentNode.parentNode === $.s.results)  {
+          movie = el.parentNode;
+        }
+        if (el.parentNode.parentNode.parentNode === $.s.results)  {
+          movie = el.parentNode.parentNode;
+        }
+        if (movie && movie.id) {
+          $.f.toggleTitle(movie);
+          return;
+        }
+      },
+      toggleTitle: function(el) {
+        if (el.className) {
+          el.className = '';
+        } else {
+          el.className = 'expanded';
+          $.w.scroll(0, el.offsetTop);
+        }
+      },
+      showSearch: function() {
+        var h = $.d.documentElement.scrollHeight * 2;
+        $.s.modal.style.height = h + 'px';
+        var t = $.w.pageYOffset + ($.w.innerHeight / 2);
+        $.s.search.style.top = t + 'px';
+        $.s.modal.className = '';
+        $.s.search.className = '';
+      },
+      hideSearch: function() {
+        $.s.modal.className = 'hidden';
+        $.s.search.className = 'hidden';
+      },
+      create: function (o) {
+        var el, i, j; 
+        el = null;
+        if (typeof o === 'object') {
+          for (i in o) {
+            if (o[i].hasOwnProperty) {
+              try {
+                el = $.d.createElement(i);
+                for (j in o[i]) { 
+                  if (o[i][j].hasOwnProperty && typeof o[i][j] === 'string') { 
+                    try { 
+                      el[j] = o[i][j]; 
+                    } catch (e2) { } 
+                  }
+                }
+              } catch (e1) { }
+              break;
+            }
+          }
+        } else { 
+          if (typeof o === 'string') { 
+            el = $.d.createElement(o); 
+          } 
+        }
+        if (typeof el === 'object' && el.tagName) { 
+          return el; 
+        } else { 
+          return false; 
+        }       
+      },
+      destroy: function (o) {
+        if (o && o.parentNode) { 
+          if (o.parentNode.removeChild(o)) { 
+            return true;
+          }
+        } 
+        return false;
+      },         
+      oAuthEscape : function(r) {
+        return encodeURIComponent(r).replace("!","%21","g").replace("*","%2A","g").replace("'","%27","g").replace("(","%28","g").replace(")","%29","g");
+      },
+      oAuthSign : function(k,d,_p,_z){
+        if(!_p){_p='=';}if(!_z){_z=8;}function _f(t,b,c,d){if(t<20){return(b&c)|((~b)&d);}if(t<40){return b^c^d;}if(t<60){return(b&c)|(b&d)|(c&d);}return b^c^d;}function _k(t){return(t<20)?1518500249:(t<40)?1859775393:(t<60)?-1894007588:-899497514;}function _s(x,y){var l=(x&0xFFFF)+(y&0xFFFF),m=(x>>16)+(y>>16)+(l>>16);return(m<<16)|(l&0xFFFF);}function _r(n,c){return(n<<c)|(n>>>(32-c));}function _c(x,l){x[l>>5]|=0x80<<(24-l%32);x[((l+64>>9)<<4)+15]=l;var w=[80],a=1732584193,b=-271733879,c=-1732584194,d=271733878,e=-1009589776;for(var i=0;i<x.length;i+=16){var o=a,p=b,q=c,r=d,s=e;for(var j=0;j<80;j++){if(j<16){w[j]=x[i+j];}else{w[j]=_r(w[j-3]^w[j-8]^w[j-14]^w[j-16],1);}var t=_s(_s(_r(a,5),_f(j,b,c,d)),_s(_s(e,w[j]),_k(j)));e=d;d=c;c=_r(b,30);b=a;a=t;}a=_s(a,o);b=_s(b,p);c=_s(c,q);d=_s(d,r);e=_s(e,s);}return[a,b,c,d,e];}function _b(s){var b=[],m=(1<<_z)-1;for(var i=0;i<s.length*_z;i+=_z){b[i>>5]|=(s.charCodeAt(i/8)&m)<<(32-_z-i%32);}return b;}function _h(k,d){var b=_b(k);if(b.length>16){b=_c(b,k.length*_z);}var p=[16],o=[16];for(var i=0;i<16;i++){p[i]=b[i]^0x36363636;o[i]=b[i]^0x5C5C5C5C;}var h=_c(p.concat(_b(d)),512+d.length*_z);return _c(o.concat(h),512+160);}function _n(b){var t="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",s='';for(var i=0;i<b.length*4;i+=3){var r=(((b[i>>2]>>8*(3-i%4))&0xFF)<<16)|(((b[i+1>>2]>>8*(3-(i+1)%4))&0xFF)<<8)|((b[i+2>>2]>>8*(3-(i+2)%4))&0xFF);for(var j=0;j<4;j++){if(i*8+j*6>b.length*32){s+=_p;}else{s+=t.charAt((r>>6*(3-j))&0x3F);}}}return s;}function _x(k,d){return _n(_h(k,d));}return _x(k,d);
+      },
+      oAuthRequest : function(url) {
+        var timestamp = Math.floor(new Date().getTime()/1000);
+        var nonce = '';
+        for (var i = 0; i < 15; i++) {
+          nonce += String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+        }
+        var u = url.split('?')[0];
+        var q = url.split('?')[1];
+        var a = [];
+        if (q) {
+          q = q.replace(/@/g, '%40').replace(/,/g, '%2C').replace(/:/g, '%3A').replace(/\//g, '%2F');
+          a = q.split('&');
+        }
+        a.push('oauth_consumer_key=' + $.a.key);
+        a.push('oauth_nonce=' + nonce);
+        a.push('oauth_signature_method=HMAC-SHA1');
+        a.push('oauth_timestamp=' + timestamp);
+        a.push('oauth_version=1.0');
+        a.push('output=json');
+        a.sort();
+        var theBody = a.join('&');
+        var theHead = 'GET&' + $.f.oAuthEscape(u) + '&';
+        var sigBase = theHead + $.f.oAuthEscape(theBody);
+        var theSig = $.f.oAuthSign($.a.secret + '&', sigBase);
+        var signedUrl = u + '?' + theBody + '&oauth_signature=' + $.f.oAuthEscape(theSig);
+        return (signedUrl);
+      }
+    };
+  }());
+  $.f.listen($.w, 'load', $.f.housekeep);    
+}(window, document, {'k':'iflx', 'key':'[YOUR KEY HERE]', 'secret':'[YOUR SECRET HERE]', 'search':'http://api.netflix.com/catalog/titles'}));
+// for your API key and secret, visit http://developer.netflix.com
+</script>
+</body>
+</html>
